@@ -1,0 +1,5 @@
+Django
+djangorestframework
+djangorestframework_simplejwt
+Pillow
+django-phonenumber-field
