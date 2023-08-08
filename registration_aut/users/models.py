@@ -12,3 +12,18 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.email
+
+class Teacher(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
+    department = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.user.email
+
+class Student(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
+    enrollment_number = models.CharField(max_length=50)
+    teachers = models.ManyToManyField(Teacher, related_name='students')
+
+    def __str__(self):
+        return self.user.email
